@@ -220,7 +220,7 @@ export const businessBayMenu = [
     name: "Avocado Smoothie",
     note: "Silky · honey drizzle · chia",
     image:
-      "https://images.unsplash.com/photo-1553530666-d1e690dac7f2?w=800&q=80",
+      "https://images.unsplash.com/photo-1502741224143-90386d7f8fd2?w=800&q=80",
   },
   {
     name: "Hummus Plate",
