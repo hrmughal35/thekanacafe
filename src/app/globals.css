@@ -1,27 +1,85 @@
+@import "lenis/dist/lenis.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Palette aligned with THE KANA CAFE logo: vivid red + white on deep charcoal */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: 220 16% 4%;
+  --foreground: 0 0% 98%;
+  --card: 220 14% 7%;
+  --card-foreground: 0 0% 98%;
+  --border: 220 10% 18%;
+  --muted: 220 12% 12%;
+  --muted-foreground: 220 8% 68%;
+  /* Logo red (primary accent) — maps to `gold` / `accent` in components */
+  --accent: 352 86% 52%;
+  --gold: 352 86% 52%;
+  --gold-dim: 352 78% 42%;
+  /* Deep crimson for depth, secondary fills */
+  --wine: 352 62% 24%;
+  /* Pure logo white for labels and highlights */
+  --sand: 0 0% 96%;
+  --radius: 1rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: auto;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-background text-foreground font-sans antialiased;
+  min-height: 100vh;
+}
+
+::selection {
+  background: hsl(var(--gold) / 0.35);
+  color: hsl(var(--foreground));
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .glass {
+    @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl;
+  }
+
+  .glass-strong {
+    @apply border border-white/15 bg-black/40 backdrop-blur-2xl;
+  }
+
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.14'/%3E%3C/svg%3E");
+  }
+
+  .gradient-ring {
+    background: linear-gradient(
+      120deg,
+      hsl(var(--gold) / 0.75),
+      hsl(0 0% 100% / 0.4),
+      hsl(var(--gold-dim) / 0.85)
+    );
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
 }
